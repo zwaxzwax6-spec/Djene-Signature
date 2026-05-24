@@ -1,0 +1,2239 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Djene Signature — Soul Coaching · Women Life Coach</title>
+  <meta name="description" content="Accompagnement spirituel pour les femmes musulmanes célibataires en chemin vers elles-mêmes et vers le mariage." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;500;600;700;800&family=Instrument+Serif:ital@0;1&family=Amiri:ital,wght@1,400&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    /* =====================================================
+       0. TOKENS
+       ===================================================== */
+    :root {
+      /* Light palette inspired by Djene Signature logo */
+      --bg: #FAF6F1;
+      --bg-warm: #F3EBE0;
+      --bg-soft: #FCFAF6;
+      --surface: #FFFFFF;
+
+      --copper: #A56847;
+      --copper-deep: #7D4E33;
+      --copper-light: #C99578;
+      --copper-pale: #E8D3C2;
+      --copper-mist: rgba(165, 104, 71, 0.08);
+
+      --ink: #2A1F18;
+      --ink-soft: #4A3A2E;
+      --ink-muted: #7A6A5E;
+      --ink-faint: #B5A99E;
+
+      /* Glass system — light variant */
+      --glass-bg: rgba(255, 255, 255, 0.55);
+      --glass-bg-strong: rgba(255, 255, 255, 0.72);
+      --glass-border: rgba(165, 104, 71, 0.16);
+      --glass-border-strong: rgba(165, 104, 71, 0.28);
+      --glass-shadow: 0 12px 40px -12px rgba(125, 78, 51, 0.18);
+      --glass-shadow-lg: 0 24px 60px -16px rgba(125, 78, 51, 0.22);
+
+      /* Hero (dark) glass — kept from singroup */
+      --hero-glass-bg: rgba(10, 14, 30, 0.42);
+      --hero-glass-border: rgba(255, 255, 255, 0.09);
+      --hero-glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.18);
+      --hero-text: #ffffff;
+      --hero-text-soft: rgba(255, 255, 255, 0.85);
+      --hero-text-muted: rgba(255, 255, 255, 0.75);
+      --cta-dark: #0a0a0a;
+    }
+
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--ink);
+      font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-feature-settings: "ss01", "ss02";
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    .serif-italic {
+      font-family: "Instrument Serif", "Times New Roman", serif;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: -0.01em;
+    }
+
+    .arabic {
+      font-family: "Amiri", serif;
+      font-style: italic;
+      direction: rtl;
+      unicode-bidi: isolate;
+    }
+
+    ::selection {
+      background: var(--copper);
+      color: #fff;
+    }
+
+    /* =====================================================
+       1. HERO (kept intact — copy/nav adapted only)
+       ===================================================== */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      overflow: hidden;
+      background: #000;
+    }
+
+    .hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.12) 0%,
+        rgba(0, 0, 0, 0.32) 100%
+      );
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Navbar */
+    .nav {
+      position: relative;
+      width: 100%;
+      padding: 28px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .nav-logo-image {
+      height: clamp(34px, 3.4vw, 42px);
+      width: auto;
+      display: block;
+      /* Preserve copper warmth, add warm halo + subtle dark shadow for legibility on dark hero */
+      filter:
+        drop-shadow(0 0 14px rgba(232, 175, 130, 0.55))
+        drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+    }
+
+    .nav-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      padding: 6px;
+      background: var(--hero-glass-bg);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid var(--hero-glass-border);
+      border-radius: 999px;
+      box-shadow: var(--hero-glass-shadow);
+    }
+
+    .nav-link {
+      padding: 9px 18px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--hero-text-soft);
+      text-decoration: none;
+      border-radius: 999px;
+      transition: background 0.2s ease, color 0.2s ease;
+      white-space: nowrap;
+    }
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--hero-text);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .nav-cta {
+      display: inline-block;
+      padding: 10px 22px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--hero-text);
+      text-decoration: none;
+      background: var(--hero-glass-bg);
+      backdrop-filter: blur(22px) saturate(180%);
+      -webkit-backdrop-filter: blur(22px) saturate(180%);
+      border: 1px solid var(--hero-glass-border);
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: var(--hero-glass-shadow);
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .nav-cta:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-1px);
+    }
+
+    .hero-center {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 24px;
+      max-width: 1240px;
+      margin: 0 auto;
+      transform: translateY(-15vh);
+    }
+
+    .hero-salam {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 16px;
+      letter-spacing: 0.02em;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 22px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .hero-salam::before,
+    .hero-salam::after {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    .hero-title {
+      font-size: clamp(36px, 5.4vw, 70px);
+      font-weight: 500;
+      line-height: 1.04;
+      letter-spacing: -0.035em;
+      color: var(--hero-text);
+      max-width: 1200px;
+    }
+    .hero-title i {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-weight: 400;
+      color: #f4dfd0;
+    }
+
+    .hero-subtitle {
+      margin-top: 18px;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.55;
+      color: var(--hero-text-muted);
+      max-width: 540px;
+    }
+
+    .hero-cta {
+      margin-top: 28px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 8px 7px 24px;
+      font-size: 14px;
+      font-weight: 500;
+      font-family: inherit;
+      color: var(--cta-dark);
+      text-decoration: none;
+      background: #fff;
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .hero-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24);
+    }
+
+    .hero-cta-icon {
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--cta-dark);
+      color: #fff;
+      border-radius: 50%;
+      transition: transform 0.25s ease;
+    }
+    .hero-cta:hover .hero-cta-icon {
+      transform: translateX(3px);
+    }
+
+    /* =====================================================
+       2. GLOBAL LIGHT SECTIONS
+       ===================================================== */
+    .section {
+      position: relative;
+      padding: 140px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-narrow {
+      max-width: 920px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px;
+      background: var(--copper-mist);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--copper-deep);
+    }
+    .eyebrow::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--copper);
+    }
+
+    .section-title {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      margin-top: 24px;
+      text-wrap: balance;
+    }
+    .section-title i {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--copper);
+    }
+
+    .section-lead {
+      margin-top: 24px;
+      font-size: 18px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 620px;
+    }
+
+    /* =====================================================
+       3. AMBIENT BACKGROUND BLOBS (light theme atmosphere)
+       ===================================================== */
+    .light-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.55;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .blob-1 {
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, #E8C9B0 0%, transparent 70%);
+      top: -200px;
+      right: -150px;
+    }
+    .blob-2 {
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, #F3DDC9 0%, transparent 70%);
+      bottom: 10%;
+      left: -200px;
+    }
+    .blob-3 {
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, var(--copper-pale) 0%, transparent 70%);
+      top: 40%;
+      right: 10%;
+      opacity: 0.4;
+    }
+
+    .section > * { position: relative; z-index: 1; }
+
+    /* =====================================================
+       4. MANIFESTO / INTRO (juste après hero)
+       ===================================================== */
+    .manifesto {
+      padding: 160px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+    }
+    .manifesto-bismillah {
+      font-family: "Amiri", serif;
+      font-style: italic;
+      font-size: 36px;
+      color: var(--copper);
+      direction: rtl;
+      letter-spacing: 0.02em;
+      opacity: 0.9;
+      display: inline-flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .manifesto-bismillah::before,
+    .manifesto-bismillah::after {
+      content: "";
+      width: 36px;
+      height: 1px;
+      background: var(--copper);
+      opacity: 0.45;
+      flex-shrink: 0;
+    }
+    .manifesto-quote {
+      margin-top: 40px;
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 400;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .manifesto-quote i {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      color: var(--copper);
+    }
+    .manifesto-sub {
+      margin-top: 32px;
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink-muted);
+      max-width: 560px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .manifesto-ornament {
+      margin-top: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      opacity: 0.55;
+    }
+    .manifesto-ornament .line {
+      width: 40px;
+      height: 1px;
+      background: var(--copper);
+    }
+    .manifesto-ornament .diamond {
+      width: 7px;
+      height: 7px;
+      background: var(--copper);
+      transform: rotate(45deg);
+    }
+
+    /* =====================================================
+       5. À PROPOS
+       ===================================================== */
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-portrait {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 24px;
+      overflow: hidden;
+      background:
+        linear-gradient(135deg, var(--copper-pale) 0%, var(--bg-warm) 100%);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow-lg);
+    }
+    .placeholder-marker {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      color: var(--copper-deep);
+    }
+    .placeholder-marker svg {
+      width: 38px;
+      height: 38px;
+      opacity: 0.45;
+    }
+    .placeholder-marker span {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      font-weight: 500;
+      opacity: 0.6;
+    }
+    .placeholder-marker .ph-hint {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 14px;
+      letter-spacing: 0;
+      text-transform: none;
+      opacity: 0.5;
+      max-width: 70%;
+      text-align: center;
+    }
+
+    .about-badge {
+      position: absolute;
+      bottom: 20px;
+      left: 20px;
+      padding: 10px 16px;
+      background: var(--glass-bg-strong);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--copper-deep);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .about-badge::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--copper);
+      box-shadow: 0 0 0 4px rgba(165, 104, 71, 0.18);
+    }
+
+    .about-text h2 {
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-top: 24px;
+    }
+    .about-text h2 i {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      color: var(--copper);
+    }
+    .about-text p {
+      margin-top: 24px;
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+    }
+    .about-signature {
+      margin-top: 36px;
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 22px;
+      color: var(--copper-deep);
+    }
+
+    /* =====================================================
+       6. COACHING — Définition
+       ===================================================== */
+    .coaching-card {
+      position: relative;
+      padding: 80px 80px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(28px) saturate(180%);
+      -webkit-backdrop-filter: blur(28px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 32px;
+      box-shadow: var(--glass-shadow);
+      overflow: hidden;
+    }
+    .coaching-card::before {
+      content: "";
+      position: absolute;
+      top: -30%;
+      right: -15%;
+      width: 700px;
+      height: 700px;
+      background: radial-gradient(circle, var(--copper-pale) 0%, transparent 60%);
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .coaching-card::after {
+      content: "";
+      position: absolute;
+      bottom: -25%;
+      left: -15%;
+      width: 520px;
+      height: 520px;
+      background: radial-gradient(circle, rgba(232, 211, 194, 0.65) 0%, transparent 70%);
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .coaching-header {
+      position: relative;
+      text-align: center;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+    .coaching-header h3 {
+      font-size: clamp(26px, 2.9vw, 36px);
+      font-weight: 500;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      text-wrap: balance;
+    }
+    .coaching-header h3 i {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      color: var(--copper);
+    }
+
+    .coaching-body {
+      position: relative;
+      margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+    }
+    .coaching-body p {
+      font-size: 16px;
+      line-height: 1.75;
+      color: var(--ink-soft);
+    }
+    .coaching-body p + p {
+      margin-top: 18px;
+    }
+
+    .coaching-verse-featured {
+      position: relative;
+      margin-top: 56px;
+      padding-top: 48px;
+      text-align: center;
+      border-top: 1px solid var(--glass-border);
+    }
+    .verse-ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 36px;
+      opacity: 0.65;
+    }
+    .verse-ornament .line {
+      width: 40px;
+      height: 1px;
+      background: var(--copper);
+    }
+    .verse-ornament .diamond {
+      width: 7px;
+      height: 7px;
+      background: var(--copper);
+      transform: rotate(45deg);
+    }
+    .coaching-verse-featured .ar {
+      font-family: "Amiri", serif;
+      font-style: italic;
+      font-size: clamp(22px, 2.4vw, 30px);
+      color: var(--copper-deep);
+      direction: rtl;
+      line-height: 1.7;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .coaching-verse-featured .fr {
+      margin-top: 24px;
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 20px;
+      color: var(--ink-soft);
+      line-height: 1.5;
+      max-width: 660px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .coaching-verse-featured .ref {
+      margin-top: 20px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      font-weight: 500;
+    }
+
+    /* =====================================================
+       7. POUR QUI
+       ===================================================== */
+    .pour-qui-grid {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .pour-qui-card {
+      position: relative;
+      padding: 36px 28px 32px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      /* Subtle base shadow + top rim highlight for dimensional feel */
+      box-shadow:
+        0 4px 20px -10px rgba(125, 78, 51, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.75);
+      transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+                  box-shadow 0.35s ease,
+                  border-color 0.35s ease;
+      overflow: hidden;
+    }
+    .pour-qui-card:hover {
+      transform: translateY(-6px);
+      box-shadow:
+        0 22px 50px -16px rgba(125, 78, 51, 0.22),
+        0 4px 12px -4px rgba(125, 78, 51, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      border-color: var(--glass-border-strong);
+    }
+    .pour-qui-card-number {
+      position: absolute;
+      top: 22px;
+      right: 24px;
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 26px;
+      color: var(--copper);
+      opacity: 0.55;
+      line-height: 1;
+    }
+    .pour-qui-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, var(--copper-pale), rgba(255,255,255,0.7));
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      border-radius: 14px;
+      color: var(--copper-deep);
+      margin-bottom: 28px;
+      /* Dimensional icon: inset highlight + tiny copper drop */
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.9),
+        0 3px 8px -3px rgba(125, 78, 51, 0.12);
+    }
+    .pour-qui-card h4 {
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 14px;
+    }
+    .pour-qui-card .pour-qui-divider {
+      width: 32px;
+      height: 1px;
+      background: var(--copper);
+      opacity: 0.55;
+      margin-bottom: 16px;
+    }
+    .pour-qui-card p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--ink-muted);
+    }
+
+    /* =====================================================
+       8. TRANSFORMATION (avant / après) — éditorial sans card
+       ===================================================== */
+    .transform-grid {
+      margin-top: 72px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 88px;
+      align-items: start;
+      position: relative;
+    }
+    /* Vertical copper line between the two columns (gradient fade top/bottom) */
+    .transform-grid::before {
+      content: "";
+      position: absolute;
+      top: 24px;
+      bottom: 24px;
+      left: 50%;
+      width: 1px;
+      background: linear-gradient(180deg, transparent 0%, var(--copper) 30%, var(--copper) 70%, transparent 100%);
+      opacity: 0.32;
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .transform-side {
+      padding: 0;
+      background: transparent;
+      border: none;
+    }
+    .transform-label {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--copper);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .transform-label.muted { color: var(--ink-muted); }
+    .transform-label::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: currentColor;
+    }
+    .transform-side h3 {
+      font-size: 28px;
+      font-weight: 500;
+      margin-top: 14px;
+      letter-spacing: -0.025em;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .transform-side h3 i {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      color: var(--copper);
+    }
+    .transform-list {
+      list-style: none;
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .transform-list li {
+      font-size: 16px;
+      line-height: 1.55;
+      color: var(--ink-soft);
+      padding-left: 26px;
+      position: relative;
+    }
+    .transform-list li::before {
+      position: absolute;
+      left: 0;
+    }
+    .transform-side.before .transform-list li::before {
+      content: "—";
+      top: 0;
+      font-size: 14px;
+      color: var(--ink-muted);
+      opacity: 0.7;
+    }
+    .transform-side.after .transform-list li::before {
+      content: "";
+      width: 14px;
+      height: 8px;
+      border-left: 1.5px solid var(--copper);
+      border-bottom: 1.5px solid var(--copper);
+      transform: rotate(-45deg);
+      top: 7px;
+    }
+
+    /* =====================================================
+       9. APPROCHE — éditorial vertical (4 piliers numérotés)
+       ===================================================== */
+    .approche-list {
+      margin-top: 72px;
+      display: flex;
+      flex-direction: column;
+      max-width: 980px;
+    }
+    .approche-item {
+      display: grid;
+      grid-template-columns: 130px 1fr;
+      gap: 48px;
+      padding: 40px 0;
+      border-top: 1px solid rgba(165, 104, 71, 0.18);
+      align-items: start;
+    }
+    .approche-item:first-child {
+      border-top: none;
+      padding-top: 12px;
+    }
+    .approche-item:last-child {
+      padding-bottom: 12px;
+    }
+    .approche-num {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 64px;
+      color: var(--copper);
+      line-height: 0.9;
+      opacity: 0.88;
+    }
+    .approche-content h4 {
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .approche-content p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--ink-soft);
+      max-width: 580px;
+    }
+
+    /* =====================================================
+       10. PROGRAMME — featured + pricing
+       ===================================================== */
+    .featured-box {
+      margin-top: 56px;
+      position: relative;
+      padding: 64px;
+      background: linear-gradient(135deg, #2A1F18 0%, #3D2B1F 100%);
+      border-radius: 32px;
+      overflow: hidden;
+      color: #fff;
+    }
+    .featured-box::before {
+      content: "";
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(201, 149, 120, 0.4) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .featured-grid {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .featured-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 16px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-radius: 999px;
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #E8C9B0;
+      font-weight: 500;
+    }
+    .featured-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #E8C9B0;
+    }
+    .featured-box h3 {
+      margin-top: 22px;
+      font-size: clamp(30px, 3.8vw, 46px);
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #fff;
+    }
+    .featured-box h3 i {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      color: #E8C9B0;
+    }
+    .featured-box p {
+      margin-top: 20px;
+      font-size: 16px;
+      line-height: 1.65;
+      color: rgba(255, 255, 255, 0.78);
+    }
+    .featured-quote {
+      margin-top: 28px;
+      padding-left: 20px;
+      border-left: 2px solid var(--copper-light);
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 17px;
+      color: rgba(255, 255, 255, 0.9);
+      line-height: 1.5;
+    }
+    .featured-visual {
+      position: relative;
+      aspect-ratio: 4 / 5;
+      border-radius: 20px;
+      background:
+        linear-gradient(135deg, rgba(201, 149, 120, 0.2), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      overflow: hidden;
+    }
+    .featured-visual .placeholder-marker {
+      color: rgba(232, 201, 176, 0.8);
+    }
+
+    /* Pricing cards */
+    .pricing-grid {
+      margin-top: 56px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .pricing-card {
+      padding: 36px 28px 32px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+    }
+    .pricing-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--glass-border-strong);
+      box-shadow: var(--glass-shadow);
+    }
+    .pricing-card.popular {
+      background:
+        linear-gradient(160deg, rgba(255, 235, 220, 0.5), rgba(255,255,255,0.65));
+      border-color: var(--copper-light);
+    }
+    .pricing-tag {
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--copper);
+      padding: 4px 10px;
+      background: var(--copper-mist);
+      border-radius: 999px;
+    }
+    .pricing-card h4 {
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      line-height: 1.2;
+    }
+    .pricing-card .price {
+      font-size: 38px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      line-height: 1;
+      font-feature-settings: "tnum";
+    }
+    .pricing-card .price small {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--ink-muted);
+      letter-spacing: 0;
+    }
+    .pricing-card .desc {
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--ink-muted);
+    }
+    .pricing-card .perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 20px;
+      border-top: 1px solid var(--glass-border);
+    }
+    .pricing-card .perks li {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--ink-soft);
+      padding-left: 22px;
+      position: relative;
+    }
+    .pricing-card .perks li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 10px;
+      height: 6px;
+      border-left: 1.5px solid var(--copper);
+      border-bottom: 1.5px solid var(--copper);
+      transform: rotate(-45deg);
+    }
+
+    /* CTA inside pricing cards + featured box */
+    .pricing-cta {
+      margin-top: 4px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 22px;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      color: var(--copper);
+      background: transparent;
+      border: 1px solid var(--copper);
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .pricing-cta:hover {
+      background: var(--copper);
+      color: #FFFCF8;
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(165, 104, 71, 0.22);
+    }
+    .pricing-cta svg {
+      width: 13px;
+      height: 13px;
+      stroke-width: 2;
+      transition: transform 0.25s ease;
+    }
+    .pricing-cta:hover svg {
+      transform: translateX(2px);
+    }
+    /* Popular card: solid copper button */
+    .pricing-card.popular .pricing-cta {
+      background: var(--copper);
+      color: #FFFCF8;
+      border-color: var(--copper);
+    }
+    .pricing-card.popular .pricing-cta:hover {
+      background: var(--copper-deep);
+      border-color: var(--copper-deep);
+      box-shadow: 0 10px 24px rgba(165, 104, 71, 0.32);
+    }
+    /* Featured box CTA (séance défouloir) : fond sombre → bouton cuivre solid lumineux */
+    .featured-box .pricing-cta {
+      align-self: flex-start;
+      margin-top: 32px;
+      background: var(--copper);
+      color: #FFFCF8;
+      border-color: var(--copper);
+      box-shadow: 0 8px 24px rgba(165, 104, 71, 0.32);
+    }
+    .featured-box .pricing-cta:hover {
+      background: var(--copper-light);
+      border-color: var(--copper-light);
+      color: #2A1F18;
+      box-shadow: 0 12px 32px rgba(201, 149, 120, 0.4);
+    }
+
+    /* Helper line "J'hésite" sous la grille tarifaire */
+    .pricing-helper {
+      margin-top: 36px;
+      text-align: center;
+    }
+    .pricing-helper span {
+      font-size: 14px;
+      color: var(--ink-muted);
+      margin-right: 8px;
+    }
+    .pricing-helper a {
+      font-size: 14px;
+      color: var(--copper);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(165, 104, 71, 0.4);
+      padding-bottom: 2px;
+      transition: border-color 0.25s ease, color 0.25s ease;
+    }
+    .pricing-helper a:hover {
+      color: var(--copper-deep);
+      border-bottom-color: var(--copper-deep);
+    }
+
+    .modalites {
+      margin-top: 48px;
+      padding: 28px 32px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    .modalites strong {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper-deep);
+      font-weight: 500;
+    }
+    .modalites span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .modalites span svg {
+      width: 16px;
+      height: 16px;
+      color: var(--copper);
+    }
+
+    /* =====================================================
+       11. TÉMOIGNAGES placeholder
+       ===================================================== */
+    .testimonials-grid {
+      margin-top: 64px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .testimonial-card {
+      padding: 36px 32px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
+      border: 1px dashed var(--glass-border-strong);
+      border-radius: 24px;
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 24px;
+      position: relative;
+    }
+    .testimonial-quote-mark {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 64px;
+      line-height: 0.6;
+      color: var(--copper);
+      opacity: 0.4;
+    }
+    .testimonial-card .placeholder-line {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 17px;
+      line-height: 1.5;
+      color: var(--ink-faint);
+    }
+    .testimonial-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--copper-pale), var(--bg-warm));
+      border: 1px solid var(--glass-border);
+    }
+    .testimonial-meta div {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .testimonial-meta strong {
+      font-size: 13px;
+      color: var(--ink-faint);
+      font-weight: 500;
+    }
+    .testimonial-meta small {
+      font-size: 11px;
+      color: var(--ink-faint);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .testimonials-note {
+      margin-top: 32px;
+      text-align: center;
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 16px;
+      color: var(--ink-muted);
+    }
+
+    /* =====================================================
+       12. CTA FINAL
+       ===================================================== */
+    .cta-final {
+      position: relative;
+      margin: 60px 40px 0;
+      padding: 100px 60px;
+      background:
+        linear-gradient(135deg, #FAEBDC 0%, #F5DCC6 50%, #E8C9B0 100%);
+      border-radius: 40px;
+      text-align: center;
+      overflow: hidden;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-final::before,
+    .cta-final::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+    }
+    .cta-final::before {
+      width: 400px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.6);
+      top: -100px;
+      left: -100px;
+    }
+    .cta-final::after {
+      width: 350px;
+      height: 350px;
+      background: rgba(201, 149, 120, 0.4);
+      bottom: -120px;
+      right: -100px;
+    }
+    .cta-final > * { position: relative; z-index: 1; }
+
+    .cta-final h2 {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 500;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .cta-final h2 i {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      color: var(--copper-deep);
+    }
+    .cta-final p {
+      margin-top: 24px;
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--ink-soft);
+      max-width: 520px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-button {
+      margin-top: 40px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 8px 8px 28px;
+      font-size: 15px;
+      font-weight: 500;
+      font-family: inherit;
+      color: #fff;
+      background: var(--ink);
+      border: none;
+      border-radius: 999px;
+      cursor: pointer;
+      box-shadow: 0 12px 30px -8px rgba(42, 31, 24, 0.4);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      text-decoration: none;
+    }
+    .cta-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 40px -8px rgba(42, 31, 24, 0.5);
+    }
+    .cta-button-icon {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--copper);
+      color: #fff;
+      border-radius: 50%;
+      transition: transform 0.25s ease;
+    }
+    .cta-button:hover .cta-button-icon {
+      transform: translateX(3px);
+    }
+
+    /* =====================================================
+       13. FOOTER
+       ===================================================== */
+    footer {
+      padding: 60px 40px 40px;
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 24px;
+      align-items: center;
+      border-top: 1px solid var(--glass-border);
+      margin-top: 100px;
+    }
+    .footer-logo {
+      display: flex;
+      align-items: center;
+    }
+    .footer-logo-image {
+      height: 56px;
+      width: auto;
+      display: block;
+    }
+    .footer-right {
+      font-size: 13px;
+      color: var(--ink-muted);
+      text-align: right;
+    }
+    .footer-right a { color: var(--copper); text-decoration: none; }
+    .footer-right a:hover { text-decoration: underline; }
+
+    /* =====================================================
+       14. VISUAL BANDS — placeholders for upcoming photography
+       ===================================================== */
+    .visual-fill {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .visual-band {
+      max-width: 1400px;
+      margin: 40px auto 0;
+      padding: 0 40px;
+    }
+    .visual-band-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 21 / 9;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--glass-shadow-lg);
+      background:
+        radial-gradient(ellipse at 25% 30%, rgba(255, 255, 255, 0.55), transparent 60%),
+        linear-gradient(135deg, #F5DCC2 0%, #E8C9B0 50%, #F0D5BC 100%);
+    }
+    .visual-band-content {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 40px;
+      text-align: center;
+      color: var(--copper-deep);
+    }
+    .vb-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      border-radius: 999px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--copper-deep);
+    }
+    .vb-tag::before {
+      content: "";
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--copper);
+    }
+    .vb-icon {
+      opacity: 0.55;
+    }
+    .vb-icon svg {
+      width: 36px;
+      height: 36px;
+    }
+    .vb-subject {
+      font-family: "Instrument Serif", serif;
+      font-style: italic;
+      font-size: 20px;
+      line-height: 1.4;
+      opacity: 0.78;
+      max-width: 540px;
+    }
+    .vb-format {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.5;
+      font-weight: 500;
+    }
+
+    /* =====================================================
+       15. SCROLL REVEAL
+       ===================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                  transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =====================================================
+       16. RESPONSIVE
+       ===================================================== */
+    @media (max-width: 1024px) {
+      .about,
+      .coaching-body,
+      .featured-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+      /* About: text comes first on mobile/tablet so we don't stack V1 + V2 images */
+      .about-text { order: -1; }
+      .pour-qui-grid,
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .testimonials-grid {
+        grid-template-columns: 1fr;
+      }
+      .transform-grid {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      /* Hide vertical divider on mobile/tablet — use horizontal border instead */
+      .transform-grid::before { display: none; }
+      .transform-side.before {
+        padding-bottom: 48px;
+        position: relative;
+      }
+      .transform-side.before::after {
+        content: "";
+        position: absolute;
+        left: 20%;
+        right: 20%;
+        bottom: 0;
+        height: 1px;
+        background: linear-gradient(90deg, transparent 0%, var(--copper) 30%, var(--copper) 70%, transparent 100%);
+        opacity: 0.32;
+      }
+      .approche-item {
+        grid-template-columns: 90px 1fr;
+        gap: 32px;
+        padding: 32px 0;
+      }
+      .approche-num {
+        font-size: 52px;
+      }
+      .approche-content h4 {
+        font-size: 22px;
+      }
+      .section { padding: 100px 24px; }
+      .coaching-card { padding: 56px 36px; }
+      .featured-box { padding: 48px 36px; }
+    }
+
+    @media (max-width: 900px) {
+      .nav-center { display: none; }
+      .nav { padding: 20px 22px; }
+    }
+
+    @media (max-width: 640px) {
+      .pour-qui-grid,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      .section { padding: 80px 20px; }
+      .cta-final { padding: 70px 32px; margin: 40px 20px 0; }
+      .manifesto { padding: 100px 24px; }
+      .featured-box { padding: 40px 28px; }
+      .coaching-card { padding: 40px 24px; }
+      .modalites { gap: 16px; }
+      /* Approche : encore plus compact sur petit mobile */
+      .approche-item {
+        grid-template-columns: 70px 1fr;
+        gap: 24px;
+        padding: 28px 0;
+      }
+      .approche-num {
+        font-size: 44px;
+      }
+      .approche-content h4 {
+        font-size: 20px;
+        margin-bottom: 10px;
+      }
+      .approche-content p {
+        font-size: 15px;
+      }
+      /* Transformation : H3 plus compact + gap réduit */
+      .transform-side h3 { font-size: 24px; }
+      .transform-grid { gap: 40px; }
+      .transform-side.before { padding-bottom: 40px; }
+      footer {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .footer-right { text-align: center; }
+
+      /* Manifesto title: smaller + keep "par toi." together (italic indivisible) */
+      .manifesto-quote {
+        font-size: 32px;
+      }
+      .manifesto-quote i {
+        white-space: nowrap;
+      }
+      /* Visual bands: switch to portrait crop on mobile so the subject is readable */
+      .visual-band {
+        padding: 0 20px;
+      }
+      .visual-band-frame {
+        aspect-ratio: 4 / 5;
+      }
+      /* Pour qui cards: tighter on mobile */
+      .pour-qui-card {
+        padding: 28px 24px 26px;
+      }
+      .pour-qui-icon {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =====================================================
+       HERO (intact — copy & nav adapted only)
+       ===================================================== -->
+  <section class="hero">
+    <video class="hero-video" autoplay muted loop playsinline preload="auto">
+      <source
+        src="https://res.cloudinary.com/duia2hrlv/video/upload/v1779649997/hf_20260524_190146_b6618456-98b5-4fa0-b098-284f1e121d90_cq2oz9.mp4"
+        type="video/mp4"
+      />
+    </video>
+
+    <div class="hero-overlay"></div>
+
+    <div class="hero-content">
+      <nav class="nav" aria-label="Primary">
+        <div class="logo">
+          <img src="logo.png" alt="Djene Signature — Soul Coaching" class="nav-logo-image" />
+        </div>
+
+        <div class="nav-center">
+          <a href="#approche" class="nav-link">Mon approche</a>
+          <a href="#programme" class="nav-link">Programme</a>
+          <a href="#a-propos" class="nav-link">À propos</a>
+          <a href="#contact" class="nav-link">Contact</a>
+        </div>
+
+        <div class="nav-right">
+          <a class="nav-cta" href="https://wa.me/33762102426?text=As-sal%C4%81mu%20%CA%BFalaykunna%20Djene%2C%20j%27aimerais%20r%C3%A9server%20mon%20appel%20d%C3%A9couverte%20gratuit%20%F0%9F%A4%8D" target="_blank" rel="noopener">Réserver un appel</a>
+        </div>
+      </nav>
+
+      <div class="hero-center">
+        <span class="hero-salam">As-salāmu ʿalaykunna</span>
+        <h1 class="hero-title">
+          Deviens la femme que tu es appelée à<br />
+          être, <i>avant le mariage.</i>
+        </h1>
+        <p class="hero-subtitle">
+          Un espace pour se recentrer, s'aligner et se renforcer
+          avant de dire oui à une nouvelle vie.
+        </p>
+
+        <a class="hero-cta" href="#programme">
+          Découvrir le programme
+          <span class="hero-cta-icon" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5"
+              stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =====================================================
+       MANIFESTO
+       ===================================================== -->
+  <div class="light-wrap">
+    <div class="blob blob-1"></div>
+
+    <section class="manifesto reveal">
+      <div class="manifesto-bismillah">بِسْمِ اللهِ</div>
+      <h2 class="manifesto-quote">
+        Tout commence <i>par toi.</i>
+      </h2>
+      <p class="manifesto-sub">
+        Beaucoup de femmes entrent dans le mariage sans avoir pris
+        le temps de se construire intérieurement. Ce chemin existe
+        pour relier ton être à ce que tu es vraiment.
+      </p>
+      <div class="manifesto-ornament" aria-hidden="true">
+        <span class="line"></span>
+        <span class="diamond"></span>
+        <span class="line"></span>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         VISUAL BAND V1 — Transition cinématique
+         ===================================================== -->
+    <div class="visual-band reveal">
+      <div class="visual-band-frame">
+        <img src="v1-silhouette.png" alt="Silhouette de femme face à une fenêtre arche, lumière dorée matinale" class="visual-fill" />
+      </div>
+    </div>
+
+
+    <!-- =====================================================
+         À PROPOS
+         ===================================================== -->
+    <section class="section" id="a-propos">
+      <div class="about">
+        <div class="about-portrait reveal">
+          <img src="v2-quran.png" alt="Mains tenant un Coran ouvert sur table de bois, tasse de thé fumante, lumière dorée" class="visual-fill" />
+          <div class="about-badge">Certifiée — coach en développement</div>
+        </div>
+
+        <div class="about-text reveal">
+          <span class="eyebrow">À propos</span>
+          <h2>Hello, Bonjour, <i>Salam.</i></h2>
+          <p>
+            Je suis Djene — coach spirituelle pour les femmes en
+            quête de construction intérieure et d'alignement avant
+            le mariage.
+          </p>
+          <p>
+            Mon parcours n'a pas été linéaire. Après plusieurs années
+            d'assistanat, un sentiment me revenait sans cesse :
+            l'insatisfaction. Je savais au fond de moi ce qui m'animait,
+            mais le regard des autres et la peur de l'inconnu me freinaient.
+          </p>
+          <p>
+            En 2021, j'ai intégré une école de coaching. Très vite, j'ai
+            compris que j'étais à ma place. Depuis toujours, les femmes
+            autour de moi se tournent naturellement vers moi pour du soutien,
+            une écoute sincère, parfois une vérité difficile à entendre.
+          </p>
+          <p>
+            Aider les autres fait partie de ma nature. Aujourd'hui, je le
+            fais en restant alignée avec ma foi et mes valeurs — c'est
+            pour cela que j'ai créé Djene Signature.
+          </p>
+          <div class="about-signature">— Djene</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         COACHING — Définition
+         ===================================================== -->
+    <section class="section section-narrow reveal">
+      <div style="text-align: center; margin-bottom: 56px;">
+        <span class="eyebrow">Qu'est-ce que le coaching</span>
+        <h2 class="section-title" style="margin-top: 20px;">
+          Une démarche pour se <i>reconnecter à son être</i>.
+        </h2>
+      </div>
+
+      <div class="coaching-card">
+        <div class="coaching-header">
+          <h3>
+            Un accompagnement qui mobilise <i>tes propres ressources intérieures</i>.
+          </h3>
+        </div>
+
+        <div class="coaching-body">
+          <div class="col">
+            <p>
+              Le coaching, c'est un suivi profond : t'aider à surmonter
+              les obstacles, optimiser tes forces, développer tes compétences.
+            </p>
+            <p>
+              Le coach n'apporte pas les réponses — il aide la coachée
+              à les faire émerger.
+            </p>
+          </div>
+          <div class="col">
+            <p>
+              Le coaching spirituel peut être lié ou non à la religion.
+              Il s'appuie avant tout sur une quête de sens, d'alignement
+              et d'épanouissement.
+            </p>
+            <p>
+              Je crois profondément que Dieu nous a placés sur cette terre
+              avec une mission. C'est ce qui guide chacune de mes séances.
+            </p>
+          </div>
+        </div>
+
+        <div class="coaching-verse-featured">
+          <div class="verse-ornament" aria-hidden="true">
+            <span class="line"></span>
+            <span class="diamond"></span>
+            <span class="line"></span>
+          </div>
+          <div class="ar">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا</div>
+          <div class="fr">
+            « Et parmi Ses signes, Il a créé de vous, pour vous,
+            des épouses pour que vous viviez en tranquillité avec elles. »
+          </div>
+          <div class="ref">Sourate Ar-Rūm — 21</div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         POUR QUI
+         ===================================================== -->
+    <section class="section">
+      <div class="reveal">
+        <span class="eyebrow">Pour qui</span>
+        <h2 class="section-title">
+          Pour toutes les femmes,<br/>
+          <i>en particulier les célibataires</i>.
+        </h2>
+        <p class="section-lead">
+          Cet accompagnement est pensé pour les femmes qui veulent se
+          construire avant de s'engager — et pour celles qui cherchent
+          à mieux se comprendre.
+        </p>
+      </div>
+
+      <div class="pour-qui-grid">
+        <article class="pour-qui-card reveal">
+          <span class="pour-qui-card-number">01</span>
+          <div class="pour-qui-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="8" r="4"/>
+              <path d="M4 21c0-4 3.5-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+          <h4>Femmes célibataires</h4>
+          <div class="pour-qui-divider"></div>
+          <p>En quête de construction intérieure et d'alignement avant un engagement.</p>
+        </article>
+
+        <article class="pour-qui-card reveal">
+          <span class="pour-qui-card-number">02</span>
+          <div class="pour-qui-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 21s-7-4.5-7-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6.5-7 11-7 11z" opacity=".6"/>
+              <path d="M12 8v4l2 1"/>
+            </svg>
+          </div>
+          <h4>Préparation au mariage</h4>
+          <div class="pour-qui-divider"></div>
+          <p>Se préparer à dire oui de manière consciente, posée, alignée.</p>
+        </article>
+
+        <article class="pour-qui-card reveal">
+          <span class="pour-qui-card-number">03</span>
+          <div class="pour-qui-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2l2.5 6 6.5.5-5 4.5L17.5 20 12 16.5 6.5 20l1.5-7-5-4.5 6.5-.5z"/>
+            </svg>
+          </div>
+          <h4>Alignement foi & identité</h4>
+          <div class="pour-qui-divider"></div>
+          <p>Recherche d'harmonie entre la foi, l'identité et les relations.</p>
+        </article>
+
+        <article class="pour-qui-card reveal">
+          <span class="pour-qui-card-number">04</span>
+          <div class="pour-qui-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"/>
+              <path d="M12 8v4l2.5 2.5"/>
+            </svg>
+          </div>
+          <h4>Mieux se connaître</h4>
+          <div class="pour-qui-divider"></div>
+          <p>Avant de s'engager, prendre le temps d'apprendre qui l'on est vraiment.</p>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         TRANSFORMATION
+         ===================================================== -->
+    <section class="section">
+      <div class="reveal" style="text-align: center;">
+        <span class="eyebrow">Transformation</span>
+        <h2 class="section-title">
+          De là où tu es,<br/><i>vers là où tu te sens appelée</i>.
+        </h2>
+      </div>
+
+      <div class="transform-grid">
+        <div class="transform-side before reveal">
+          <span class="transform-label muted">Ce qui te pèse aujourd'hui</span>
+          <h3>Là où tu te trouves</h3>
+          <ul class="transform-list">
+            <li>Un manque de clarté sur toi-même</li>
+            <li>Une difficulté à te positionner dans les relations</li>
+            <li>Des schémas relationnels répétitifs ou déséquilibrés</li>
+            <li>Un manque de connaissance sur le rôle de la femme en Islam</li>
+          </ul>
+        </div>
+
+        <div class="transform-side after reveal">
+          <span class="transform-label">Ce que tu en retires</span>
+          <h3>Là où tu <i>te rends</i></h3>
+          <ul class="transform-list">
+            <li>Une meilleure connaissance de toi-même</li>
+            <li>Une vision plus claire du mariage et du couple</li>
+            <li>Une confiance en Allah renforcée</li>
+            <li>Une femme alignée avec ses valeurs et sa foi</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- VISUAL BAND V3 — Chemin de transformation -->
+      <div class="visual-band reveal" style="margin-top: 56px;">
+        <div class="visual-band-frame">
+          <img src="v3-path.png" alt="Chemin de pierres entre palmiers, lumière dorée du matin, symbolique de la transformation" class="visual-fill" />
+        </div>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         APPROCHE
+         ===================================================== -->
+    <section class="section" id="approche">
+      <div class="reveal">
+        <span class="eyebrow">Mon approche</span>
+        <h2 class="section-title">
+          Une méthode <i>profonde, personnalisée, ancrée</i>.
+        </h2>
+        <p class="section-lead">
+          Quatre piliers qui structurent chaque séance et chaque accompagnement.
+        </p>
+      </div>
+
+      <div class="approche-list">
+        <article class="approche-item reveal">
+          <div class="approche-num">01</div>
+          <div class="approche-content">
+            <h4>Introspection</h4>
+            <p>Un accompagnement basé sur la conscience de soi et l'alignement intérieur.</p>
+          </div>
+        </article>
+
+        <article class="approche-item reveal">
+          <div class="approche-num">02</div>
+          <div class="approche-content">
+            <h4>Identité & émotions</h4>
+            <p>Un travail concret sur ton identité, tes émotions et tes intentions profondes.</p>
+          </div>
+        </article>
+
+        <article class="approche-item reveal">
+          <div class="approche-num">03</div>
+          <div class="approche-content">
+            <h4>Personnalisé</h4>
+            <p>Une approche profonde, adaptée à ton parcours, ton vécu et tes besoins.</p>
+          </div>
+        </article>
+
+        <article class="approche-item reveal">
+          <div class="approche-num">04</div>
+          <div class="approche-content">
+            <h4>Ancrée dans l'Islam</h4>
+            <p>Un accompagnement porté par les principes de la foi musulmane.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         PROGRAMME — featured + pricing
+         ===================================================== -->
+    <section class="section" id="programme">
+      <div class="reveal" style="text-align:center;">
+        <span class="eyebrow">Le programme</span>
+        <h2 class="section-title">
+          Un accompagnement pensé pour <i>te construire</i>.
+        </h2>
+        <p class="section-lead" style="margin-left:auto;margin-right:auto;">
+          Soi la femme de ta vie. Tu mérites d'être heureuse, n'est-ce pas ?
+        </p>
+      </div>
+
+      <!-- Featured séance défouloir -->
+      <article class="featured-box reveal">
+        <div class="featured-grid">
+          <div>
+            <span class="featured-tag">Séance signature</span>
+            <h3>La séance <i>défouloir</i>, inspirée de la boxe.</h3>
+            <p>
+              Intégrée au coaching, cette séance permet de lâcher prise et
+              d'évacuer les tensions émotionnelles, mentales et physiques
+              à travers un travail encadré sur pattes d'ours.
+            </p>
+            <p>
+              Passionnée de boxe depuis plus de dix ans, j'ai construit cet
+              outil pour travailler le mindset, la gestion des émotions et
+              le dépassement de soi — dans un cadre bienveillant et sécurisé.
+            </p>
+            <blockquote class="featured-quote">
+              Ce n'est pas un cours de boxe. C'est un outil d'expression
+              et de libération émotionnelle.
+            </blockquote>
+            <a href="https://wa.me/33762102426?text=As-sal%C4%81mu%20%CA%BFalaykunna%20Djene%2C%20la%20s%C3%A9ance%20d%C3%A9fouloir%20m%27int%C3%A9resse%2C%20j%27aimerais%20en%20savoir%20plus%20%F0%9F%A4%8D" target="_blank" rel="noopener" class="pricing-cta">
+              Réserver une séance défouloir
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"/>
+                <polyline points="12 5 19 12 12 19"/>
+              </svg>
+            </a>
+          </div>
+          <div class="featured-visual">
+            <img src="v4-gloves.png" alt="Gants de boxe vintage en cuir cuivre sur lin cream drapé" class="visual-fill" />
+          </div>
+        </div>
+      </article>
+
+      <!-- Pricing grid -->
+      <div class="pricing-grid">
+        <article class="pricing-card reveal">
+          <span class="pricing-tag">À l'unité</span>
+          <h4>Séance unique</h4>
+          <div class="price">35–60<small>€ / séance</small></div>
+          <p class="desc">Tarif adapté selon ta situation socio-professionnelle.</p>
+          <ul class="perks">
+            <li>1 séance personnalisée</li>
+            <li>Tarif solidaire</li>
+            <li>Pas d'engagement</li>
+          </ul>
+          <a href="https://wa.me/33762102426?text=As-sal%C4%81mu%20%CA%BFalaykunna%20Djene%2C%20je%20voudrais%20r%C3%A9server%20une%20s%C3%A9ance%20%C3%A0%20l%27unit%C3%A9%20%F0%9F%A4%8D" target="_blank" rel="noopener" class="pricing-cta">
+            Réserver une séance
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="pricing-card reveal">
+          <span class="pricing-tag">Découverte</span>
+          <h4>Pack 3 séances</h4>
+          <div class="price">150<small>€ + 1 offerte</small></div>
+          <p class="desc">Pour commencer le chemin avec un premier socle.</p>
+          <ul class="perks">
+            <li>3 séances + 1 offerte</li>
+            <li>Suivi messages entre séances</li>
+            <li>Premier ancrage</li>
+          </ul>
+          <a href="https://wa.me/33762102426?text=As-sal%C4%81mu%20%CA%BFalaykunna%20Djene%2C%20le%20Pack%20D%C3%A9couverte%20%283%20s%C3%A9ances%20%2B%201%20offerte%2C%20150%E2%82%AC%29%20m%27int%C3%A9resse%20%F0%9F%A4%8D" target="_blank" rel="noopener" class="pricing-cta">
+            Choisir ce pack
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="pricing-card popular reveal">
+          <span class="pricing-tag">Le plus choisi</span>
+          <h4>Pack 5 séances</h4>
+          <div class="price">250<small>€ + 1 offerte</small></div>
+          <p class="desc">L'équilibre idéal pour amorcer un vrai changement.</p>
+          <ul class="perks">
+            <li>5 séances + 1 offerte</li>
+            <li>Suivi messages entre séances</li>
+            <li>Séance défouloir incluse</li>
+          </ul>
+          <a href="https://wa.me/33762102426?text=As-sal%C4%81mu%20%CA%BFalaykunna%20Djene%2C%20le%20Pack%205%20s%C3%A9ances%20%2B%201%20offerte%20%28250%E2%82%AC%29%20m%27int%C3%A9resse%20%F0%9F%A4%8D" target="_blank" rel="noopener" class="pricing-cta">
+            Choisir ce pack
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+
+        <article class="pricing-card reveal">
+          <span class="pricing-tag">Transformation</span>
+          <h4>Pack complet</h4>
+          <div class="price">400<small>€ / 10 séances</small></div>
+          <p class="desc">Un parcours en profondeur, pensé pour aller au bout.</p>
+          <ul class="perks">
+            <li>10 séances</li>
+            <li>Suivi messages entre séances</li>
+            <li>Séance défouloir incluse</li>
+          </ul>
+          <a href="https://wa.me/33762102426?text=As-sal%C4%81mu%20%CA%BFalaykunna%20Djene%2C%20je%20souhaiterais%20souscrire%20au%20Pack%20complet%20%2810%20s%C3%A9ances%2C%20400%E2%82%AC%29%20%F0%9F%A4%8D" target="_blank" rel="noopener" class="pricing-cta">
+            Choisir ce pack
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+        </article>
+      </div>
+
+      <div class="pricing-helper reveal">
+        <span>Tu hésites entre plusieurs formats ?</span>
+        <a href="https://wa.me/33762102426?text=As-sal%C4%81mu%20%CA%BFalaykunna%20Djene%2C%20j%27h%C3%A9site%20entre%20plusieurs%20formats%2C%20j%27aimerais%20ton%20avis%20%F0%9F%A4%8D" target="_blank" rel="noopener">En discuter directement avec Djene</a>
+      </div>
+
+      <div class="modalites reveal">
+        <strong>Modalités</strong>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 9h18"/></svg>
+          En cabinet
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="14" height="12" rx="2"/><polygon points="22 8 16 12 22 16 22 8"/></svg>
+          En visio
+        </span>
+        <span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+          À domicile — Île-de-France
+        </span>
+      </div>
+    </section>
+
+
+    <!-- =====================================================
+         CTA FINAL
+         ===================================================== -->
+    <section class="cta-final reveal" id="contact">
+      <h2>
+        Construire sa vie commence par <i>se construire soi-même.</i>
+      </h2>
+      <p>
+        Un appel gratuit pour échanger sur ton chemin, comprendre où
+        tu en es, et voir si l'accompagnement te correspond.
+      </p>
+      <a href="https://wa.me/33762102426?text=As-sal%C4%81mu%20%CA%BFalaykunna%20Djene%2C%20j%27aimerais%20r%C3%A9server%20mon%20appel%20d%C3%A9couverte%20gratuit%20%F0%9F%A4%8D" target="_blank" rel="noopener" class="cta-button">
+        Réserver mon appel gratuit
+        <span class="cta-button-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </span>
+      </a>
+    </section>
+
+
+    <!-- =====================================================
+         FOOTER
+         ===================================================== -->
+    <footer>
+      <div class="footer-logo">
+        <img src="logo.png" alt="Djene Signature — Soul Coaching · Women Life Coach" class="footer-logo-image" />
+      </div>
+      <div class="footer-right">
+        © 2026 Djene Signature — Tous droits réservés<br/>
+        <a href="#">Mentions légales</a> · <a href="#">Confidentialité</a>
+      </div>
+    </footer>
+
+  </div><!-- /.light-wrap -->
+
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-visible');
+            io.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+    reveals.forEach((el) => io.observe(el));
+  </script>
+</body>
+</html>
