@@ -158,6 +158,7 @@
     /* Navbar */
     .nav {
       position: relative;
+      z-index: 10;
       width: 100%;
       padding: 28px 40px;
       display: flex;
@@ -235,6 +236,7 @@
       cursor: pointer;
       box-shadow: var(--hero-glass-shadow);
       transition: background 0.2s ease, transform 0.2s ease;
+      white-space: nowrap;
     }
     .nav-cta:hover {
       background: rgba(255, 255, 255, 0.1);
@@ -251,7 +253,16 @@
       padding: 0 24px;
       max-width: 1240px;
       margin: 0 auto;
-      transform: translateY(-15vh);
+      transform: translateY(-23vh);
+      /* Zone vide ne capture pas les clics — sinon le translateY remonte
+         le rectangle de hit au-dessus de la navbar et bloque ses clics */
+      pointer-events: none;
+    }
+    /* Réactiver les clics sur les éléments interactifs DANS hero-center */
+    .hero-center a,
+    .hero-center button,
+    .hero-cta {
+      pointer-events: auto;
     }
 
     .hero-salam {
@@ -1796,6 +1807,8 @@
        16. RESPONSIVE
        ===================================================== */
     @media (max-width: 1024px) {
+      /* Hero block : remonter pour passer au-dessus de la tête de la femme du fond */
+      .hero-center { transform: translateY(-23vh); }
       .about,
       .coaching-body,
       .featured-grid {
@@ -1853,6 +1866,14 @@
     }
 
     @media (max-width: 640px) {
+      /* Hero block : remonter encore plus sur mobile (image plus serrée verticalement) */
+      .hero-center { transform: translateY(-27vh); }
+      /* Nav CTA "Réserver un appel" doit tenir sur une ligne en mobile */
+      .nav-cta {
+        font-size: 12px;
+        padding: 8px 14px;
+        white-space: nowrap;
+      }
       .pour-qui-grid,
       .pricing-grid {
         grid-template-columns: 1fr;
