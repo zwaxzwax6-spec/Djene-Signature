@@ -291,6 +291,9 @@
       color: var(--hero-text);
       max-width: 1200px;
     }
+    /* Desktop : les retours mobiles sont neutralisés, le texte coule naturellement */
+    .hero-title .br-mobile { display: none; }
+    .hero-title .br-desktop { display: inline; }
     .hero-title i {
       font-family: "Instrument Serif", serif;
       font-style: italic;
@@ -1917,6 +1920,14 @@
     @media (max-width: 640px) {
       /* Hero block : remonter encore plus sur mobile (image plus serrée verticalement) */
       .hero-center { transform: translateY(-27vh); }
+      /* Titre hero : découpage forcé en 3 lignes propres + italique sur mobile */
+      .hero-title .br-mobile { display: inline; }
+      .hero-title .br-desktop { display: none; }
+      .hero-title {
+        font-size: clamp(30px, 8vw, 40px);
+        letter-spacing: -0.03em;
+        white-space: nowrap;
+      }
       /* Nav CTA "Réserver un appel" doit tenir sur une ligne en mobile */
       .nav-cta {
         font-size: 12px;
@@ -2020,7 +2031,8 @@
       <div class="hero-center">
         <span class="hero-salam">As-salāmu ʿalaykunna, Hello</span>
         <h1 class="hero-title">
-          Deviens la femme que tu es appelée à être,<br />
+          Deviens la femme que<br class="br-mobile" /><br class="br-desktop" />
+          tu es appelée à être,<br />
           <i>avant le mariage.</i>
         </h1>
         <p class="hero-subtitle">
